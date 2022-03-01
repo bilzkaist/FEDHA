@@ -28,7 +28,7 @@ CHARLIE = [3]
 DIRPATH = "/Users/bilaldastagir/Documents/vscode/FEDHA/"
 
 # multi-scale
-N_LAYERS = 4
+N_LAYERS = 1
 DOWNSCALE = 2
 
 def run_fedha():
