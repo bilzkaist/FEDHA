@@ -46,6 +46,9 @@ def run_fedha():
     gray2 = np.array(gray2)
     grays2 = list(pyramid_gaussian(gray2, downscale=DOWNSCALE, max_layer=N_LAYERS, multichannel=False))
 
+    np.set_printoptions(threshold=np.inf)
+    print("Gray1 with lenght (",len(gray1),") : ",gray2)
+    print("Gray2 with lenght (",len(gray2),") : ",gray2)
     lap1 = tm.time()
     executionTime = (lap1 - start)
     print("Images are read - The Execution Time = ", executionTime, " Seconds")
@@ -54,8 +57,9 @@ def run_fedha():
     print('scales: ', scales, '\n')
     features_img1 = Image.fromarray(np.copy(img1))
     features_img2 = Image.fromarray(np.copy(img2))
+    print("Feature Image : ", features_img1)
 
-    kps1 = []
+    kps1 = [] 
     kps2 = []
 
     ds1 = []
