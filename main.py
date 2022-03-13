@@ -12,6 +12,8 @@ from time import time
 from skimage.feature import plot_matches
 from skimage.transform import pyramid_gaussian
 
+import cv2
+
 from utils import *
 
 import time as tm
@@ -30,6 +32,33 @@ DIRPATH = "/Users/bilaldastagir/Documents/vscode/FEDHA/"
 # multi-scale
 N_LAYERS = 1
 DOWNSCALE = 2
+
+def run_ORB_CV():
+    print("ORB_CV Program is Started........... !!!")
+    # Write code Here
+    # Read image 
+    img2 = cv2.imread(DIRPATH + 'images/KAIST_64.jpeg')
+    #orb = cv2.ORB_create(edgeThreshold=15, patchSize=31, nlevels=8, fastThreshold=20, scaleFactor=1.2, WTA_K=2,scoreType=cv2.ORB_HARRIS_SCORE, firstLevel=0, nfeatures=4015)
+    orb = cv2.ORB_create(edgeThreshold=15, patchSize=31, nlevels=8, fastThreshold=20, scaleFactor=1.2, WTA_K=2,scoreType=cv2.ORB_FAST_SCORE, firstLevel=0, nfeatures=3925)
+    #orb = cv2.ORB_create()
+    start = tm.time()
+    kp2 = orb.detect(img2)
+    stop = tm.time()
+    executionTimeFinal = (stop - start)
+    print("The ORB_CV_2 Feature Detection Final Execution Time = ", executionTimeFinal, " Seconds")  
+   
+
+    # no.of keypoints 
+    print(len(kp2))
+    print('Feature points are detected')
+    img2_kp = cv2.drawKeypoints(img2, kp2, None, color=(0,0,255), \
+            flags=cv2.DrawMatchesFlags_DEFAULT)
+
+    #plt.figure()
+    plt.figure(figsize=(10,7.5))
+    plt.imshow(img2_kp)
+    plt.show()
+    print("ORB_CV Program is Ended Successfully !!!")
 
 def run_fedha():
     print("FEDHA Program is Started........... !!!")
@@ -171,7 +200,8 @@ def run_fedha():
 def run_beta():
     print("Beta Program is Started........... !!!")
     # Write code Here
-    run_fedha()
+    #run_fedha()
+    run_ORB_CV()
     print("Beta Program is Ended Successfully !!!")
     return BETA
 
