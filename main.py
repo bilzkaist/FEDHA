@@ -38,6 +38,7 @@ def run_ORB_CV():
     # Write code Here
     # Read image 
     img2 = cv2.imread(DIRPATH + 'images/KAIST_64.jpeg')
+    plt.imshow(img2)
     #orb = cv2.ORB_create(edgeThreshold=15, patchSize=31, nlevels=8, fastThreshold=20, scaleFactor=1.2, WTA_K=2,scoreType=cv2.ORB_HARRIS_SCORE, firstLevel=0, nfeatures=4015)
     orb = cv2.ORB_create(edgeThreshold=15, patchSize=31, nlevels=8, fastThreshold=20, scaleFactor=1.2, WTA_K=2,scoreType=cv2.ORB_FAST_SCORE, firstLevel=0, nfeatures=3925)
     #orb = cv2.ORB_create()
